@@ -1,38 +1,51 @@
-class Node{
-    costructor(val){
-        this.val = val;
+class Node {
+    constructor(value) {
+        this.value = value;
         this.left = null;
         this.right = null;
     }
 }
 
-class BST{
-    constructor(){
+
+
+class BST {
+    constructor() {
         this.root = null;
     }
-    insert(val){
-        //iteraviely/recursively
-        let newNode = new Node(val)
-        
-        if(this.root === null){
+    insert(value) {
+        //make new node
+        let newNode = new Node(value)
+
+        if (!this.root) {
             this.root = newNode;
             return this;
-        } else{  //else if there is a root 
-            //check left side
+        } else {
+            //get root
             let current = this.root;
-            while(true){
-                if(val < current.val){ //check to see left/right
-                    if(current.left === null){
+            while (true) {
+                //check to see if value less then root
+                if (value < current.value) {
+                    //if so check to see if left note empty
+                    if (current.left === null) {
                         current.left = newNode;
                         return this;
-                    } else{
+                    } else { //go a level owev and try again
                         current = current.left
                     }
-                } // if
-                
-            } //while
-            
-        }  //else     
-      }//insert
-}//class
+                }
+                //do the same now to the right side
+                else if (value > current.value) {
+                    //check to see if right node is empty
+                    if (current.right === null) {
+                        current.right = newNode;
+                        return this;
+                    }
+                    else {//if not move to right node
+                        current = current.right
+                    }
+                }
+            }
+        }
+    }
+}
 
