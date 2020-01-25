@@ -23,6 +23,11 @@ class BST {
             //get root
             let current = this.root;
             while (true) {
+                //frequency check
+                if (value === current.value) {
+                    current.frequency++
+                    return this;
+                }
                 //check to see if value less then root
                 if (value < current.value) {
                     //if so check to see if left note empty
