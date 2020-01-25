@@ -52,23 +52,33 @@ class BST {
             }
         }
     }
-    Myfind(value) {
-        if (this.root === null) return false
-        //get current root
+    find(value) {
+        //make sure root isn't empty
+        if (this.root === null) return false;
+
+        //get root
         let current = this.root;
-        while (true) {
-            if (value === current.value) {
-                return true;
-            } else if (value < current.value) {
+
+        //found variable
+        let found = false;
+
+        //as soon as current is null the loop will stop
+        while (current && !found) {
+            //if its less go left
+            if (value < current.value) {
                 current = current.left;
-            } else if (value > current.value) {
-                current = current.right;
-            } else {
-                if (current.value === null) {
-                    return false
-                }
+            }
+            //if its more go right
+            else if (value > current.value) {
+                current = current.right
+            }
+            //if its equal break the loop and return node
+            else if (value === current.value) {
+                found = true
+                return current
             }
         }
+        return undefined
     }
 }
 
