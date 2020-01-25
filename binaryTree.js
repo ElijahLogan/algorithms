@@ -52,5 +52,23 @@ class BST {
             }
         }
     }
+    Myfind(value) {
+        if (this.root === null) return false
+        //get current root
+        let current = this.root;
+        while (true) {
+            if (value === current.value) {
+                return true;
+            } else if (value < current.value) {
+                current = current.left;
+            } else if (value > current.value) {
+                current = current.right;
+            } else {
+                if (current.value === null) {
+                    return false
+                }
+            }
+        }
+    }
 }
 
