@@ -3,6 +3,7 @@ class Node {
         this.value = value;
         this.left = null;
         this.right = null;
+        this.frequency = 1;
     }
 }
 
@@ -28,6 +29,7 @@ class BST {
                     current.frequency++
                     return this;
                 }
+
                 //check to see if value less then root
                 if (value < current.value) {
                     //if so check to see if left note empty
@@ -79,6 +81,23 @@ class BST {
             }
         }
         return undefined
+    }
+    BFS() {
+        //root
+        let node = this.root;
+        //return at end
+        let data = [];
+        let queue = [];
+        //add to the begining
+        queue.push(node)
+        while (queue.length) {
+            //take from the beginning
+            node = queue.shift()
+            data.push(node)
+            if (node.left) { queue.push(node.left) }
+            if (node.right) { queue.push(node.right) }
+        }
+        return data
     }
 }
 
