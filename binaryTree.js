@@ -99,5 +99,31 @@ class BST {
         }
         return data
     }
-}
+    DFSPreOrder() {
+        //data order we visit
+        let data = []
+        //root
+        let current = this.root;
+        function traverse(node) {
+            data.push(node)
+            if (node.left) traverse(node.left)
+            if (node.right) traverse(node.right)
+        }
+        traverse(current)
+        return data
+    }
+    DFSPostOrder() {
+        //data order we visit
+        let data = []
+        //root
+        let current = this.root;
+        function traverse(node) {
+            if (node.left) traverse(node.left)
+            if (node.right) traverse(node.right)
+            data.push(node)
+        }
+        traverse(current)
+        return data
+    }
 
+}
